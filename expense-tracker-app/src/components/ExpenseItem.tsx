@@ -1,3 +1,4 @@
+import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 type Props = {
@@ -10,11 +11,7 @@ type Props = {
 const ExpenseItem = ({ title, amount, date }: Props) => {
   return (
     <div className="expense-item">
-      <div>
-        <div>{date.toLocaleString("es-AR", { month: "long" })}</div>
-        <div>{date.toLocaleString("es-AR", { day: "2-digit" })}</div>
-        <div>{date.getFullYear()}</div>
-      </div>
+      <ExpenseDate date={date} />
       <div className="expense-item__description">
         <h2>{title}</h2>
         <div className="expense-item__price">${amount}</div>
