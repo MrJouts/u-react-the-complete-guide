@@ -1,5 +1,5 @@
-import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
+import ExpenseDate from "./ExpenseDate";
 
 type Props = {
   id?: string;
