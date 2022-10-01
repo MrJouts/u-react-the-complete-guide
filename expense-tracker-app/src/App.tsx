@@ -2,6 +2,13 @@ import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
+type Expense = {
+  id?: string;
+  title: string;
+  amount: number;
+  date: Date;
+};
+
 function App() {
   const expenses = [
     {
@@ -25,9 +32,13 @@ function App() {
     },
   ];
 
+  const addExpense = (expense: Expense) => {
+    console.log("App - adding...", expense);
+  };
+
   return (
     <div className="App">
-      <NewExpense />
+      <NewExpense onSaveExpense={addExpense} />
       <Expenses expenses={expenses} />
     </div>
   );

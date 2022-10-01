@@ -6,7 +6,11 @@ type Form = {
   submitEvent: React.FormEvent;
 };
 
-const ExpenseForm = () => {
+type Props = {
+  onSaveExpense: Function;
+};
+
+const ExpenseForm = ({ onSaveExpense }: Props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -32,7 +36,7 @@ const ExpenseForm = () => {
       date: new Date(enteredDate),
     };
 
-    console.log(expenseData);
+    onSaveExpense(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
