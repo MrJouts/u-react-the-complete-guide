@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import "./ExpenseForm.css";
 
 type Form = {
@@ -8,9 +8,10 @@ type Form = {
 
 type Props = {
   onSaveExpense: Function;
+  onCancel: MouseEventHandler<HTMLButtonElement>;
 };
 
-const ExpenseForm = ({ onSaveExpense }: Props) => {
+const ExpenseForm = ({ onSaveExpense, onCancel }: Props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -78,6 +79,9 @@ const ExpenseForm = ({ onSaveExpense }: Props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
