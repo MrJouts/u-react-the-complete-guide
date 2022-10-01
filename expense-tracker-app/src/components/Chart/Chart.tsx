@@ -1,11 +1,6 @@
+import { Point } from "../../types";
 import "./Chart.css";
 import ChartBar from "./ChartBar";
-
-type Point = {
-  value: number;
-  maxValue?: number;
-  label: string;
-};
 
 type Props = {
   points: Point[];

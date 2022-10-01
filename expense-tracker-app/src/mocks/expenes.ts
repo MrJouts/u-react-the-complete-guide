@@ -1,4 +1,4 @@
-import { Expense } from "../types/expenses";
+import { Expense } from "../types";
 
 export const INITIAL_EXPENSES: Expense[] = [
   {

@@ -1,10 +1,5 @@
 import "./ChartBar.css";
-
-type Point = {
-  value: number;
-  maxValue: number;
-  label: string;
-};
+import { Point } from "../../types";
 
 const ChartBar = ({ value, maxValue, label }: Point) => {
   let barFillHeight = "0%";

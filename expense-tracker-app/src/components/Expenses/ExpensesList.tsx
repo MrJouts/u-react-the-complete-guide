@@ -1,6 +1,6 @@
 import "./ExpensesList.css";
 import ExpenseItem from "./ExpenseItem";
-import { Expense } from "../../types/expenses";
+import { Expense } from "../../types";
 
 type Props = {
   items: Expense[];

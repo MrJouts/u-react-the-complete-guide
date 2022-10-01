@@ -3,7 +3,7 @@ import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import { INITIAL_EXPENSES } from "./mocks/expenes";
-import { Expense } from "./types/expenses";
+import { Expense } from "./types";
 
 function App() {
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
