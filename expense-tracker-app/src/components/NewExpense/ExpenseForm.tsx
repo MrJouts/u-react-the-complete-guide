@@ -6,20 +6,28 @@ type Form = {
 };
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  // const [enteredTitle, setEnteredTitle] = useState("");
+  // const [enteredAmount, setEnteredAmount] = useState("");
+  // const [enteredDate, setEnteredDate] = useState("");
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    entederAmount: "",
+    enteredDate: "",
+  });
 
   const titleChangeHandler = (event: Form["changeEvent"]) => {
-    setEnteredTitle(event.target.value);
+    // setEnteredTitle(event.target.value);
+    setUserInput({ ...userInput, enteredTitle: event.target.value });
   };
 
   const amountChangeHandler = (event: Form["changeEvent"]) => {
-    setEnteredAmount(event.target.value);
+    // setEnteredAmount(event.target.value);
+    setUserInput({ ...userInput, entederAmount: event.target.value });
   };
 
   const dateChangeHandler = (event: Form["changeEvent"]) => {
-    setEnteredDate(event.target.value);
+    // setEnteredDate(event.target.value);
+    setUserInput({ ...userInput, enteredDate: event.target.value });
   };
 
   return (
