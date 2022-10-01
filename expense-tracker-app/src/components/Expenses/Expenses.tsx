@@ -4,6 +4,7 @@ import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
 import ExpensesList from "./ExpensesList";
 import { Expense } from "../../types/expenses";
+import ExpensesChart from "./ExpensesChart";
 
 type Props = {
   expenses: Expense[];
@@ -25,6 +26,7 @@ const Expenses = ({ expenses }: Props) => {
         selectedYear={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
+      <ExpensesChart expenses={filteredExpenses} />
       <ExpensesList items={filteredExpenses} />
     </Card>
   );

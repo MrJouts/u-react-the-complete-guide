@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Expense } from "../../types/expenses";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
@@ -13,7 +14,7 @@ const NewExpense = ({ onAddExpense }: Props) => {
     setIsEditing((isEditing) => !isEditing);
   };
 
-  const saveExpense = (enteredExpense: any) => {
+  const saveExpense = (enteredExpense: Expense) => {
     const expense = {
       ...enteredExpense,
       id: Math.random().toString(),
