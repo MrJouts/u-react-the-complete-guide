@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { User } from "../../types";
 
 type Props = {
   saveUser: Function;
@@ -17,14 +18,13 @@ const UserForm = ({ saveUser }: Props) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const user = {
+    const user: User = {
+      id: Math.random(),
       name,
       age: +age,
     };
 
     saveUser(user);
-
-    console.log("new user", user);
   };
 
   return (
