@@ -1,10 +1,5 @@
+import { User } from "../../types";
 import styles from "./UserList.module.scss";
-
-type User = {
-  id: number;
-  name: string;
-  age: number;
-};
 
 type Props = {
   users: User[];
