@@ -1,5 +1,3 @@
-import React from "react";
-
 import styles from "./UserList.module.scss";
 
 const UserList = () => {
