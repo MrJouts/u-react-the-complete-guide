@@ -3,7 +3,13 @@ import "./App.css";
 import UserForm from "./components/UserForm/UserForm";
 import UserList from "./components/UserList/UserList";
 
-const DEFAULT_USERS = [
+type User = {
+  id: number;
+  name: string;
+  age: number;
+};
+
+const DEFAULT_USERS: User[] = [
   {
     id: 1,
     name: "Carlos",
@@ -24,9 +30,13 @@ const DEFAULT_USERS = [
 function App() {
   const [users, setUsers] = useState(DEFAULT_USERS);
 
+  const handleSaveUser = (user: User) => {
+    setUsers((prevUsers) => [user, ...prevUsers]);
+  };
+
   return (
     <div className="user-app">
-      <UserForm />
+      <UserForm saveUser={handleSaveUser} />
       <UserList />
       {users.map(({ name, age }) => (
         <div>

@@ -1,33 +1,42 @@
-import { ChangeEvent, ReactEventHandler, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-type Events = {};
+type Props = {
+  saveUser: Function;
+};
 
-const UserForm = () => {
+const UserForm = ({ saveUser }) => {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(null);
+  const [age, setAge] = useState("");
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) =>
     setName(e.target.value);
 
   const handleAgeChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setName(e.target.value);
+    setAge(e.target.value);
 
-  const handleSubmit = () => {
-    event?.preventDefault();
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
-    console.log("new user", name, age);
+    const user = {
+      name,
+      age: +age,
+    };
+
+    saveUser(user);
+
+    console.log("new user", user);
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" />
+          <input type="text" value={name} onChange={handleNameChange} />
         </div>
         <div>
           <label htmlFor="age">Age</label>
-          <input type="text" />
+          <input type="text" value={age} onChange={handleAgeChange} />
         </div>
         <button type="submit">Create user</button>
       </form>
