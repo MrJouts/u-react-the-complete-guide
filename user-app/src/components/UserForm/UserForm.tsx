@@ -4,7 +4,7 @@ type Props = {
   saveUser: Function;
 };
 
-const UserForm = ({ saveUser }) => {
+const UserForm = ({ saveUser }: Props) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 

@@ -21,7 +21,7 @@ const DEFAULT_USERS: User[] = [
     age: 24,
   },
   {
-    id: 2,
+    id: 3,
     name: "Gonzalo",
     age: 33,
   },
@@ -37,13 +37,7 @@ function App() {
   return (
     <div className="user-app">
       <UserForm saveUser={handleSaveUser} />
-      <UserList />
-      {users.map(({ name, age }) => (
-        <div>
-          <span>{name}</span>
-          <span>{age}</span>
-        </div>
-      ))}
+      <UserList users={users} />
     </div>
   );
 }
