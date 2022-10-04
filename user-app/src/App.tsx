@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import UserForm from "./components/UserForm/UserForm";
 import UserList from "./components/UserList/UserList";
 
 const DEFAULT_USERS = [
@@ -25,13 +26,14 @@ function App() {
 
   return (
     <div className="user-app">
+      <UserForm />
+      <UserList />
       {users.map(({ name, age }) => (
         <div>
           <span>{name}</span>
           <span>{age}</span>
         </div>
       ))}
-      <UserList />
     </div>
   );
 }
