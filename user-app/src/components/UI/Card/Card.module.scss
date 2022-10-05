@@ -1,10 +1,11 @@
 .card {
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-white);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   min-width: 500px;
   width: 500px;
   padding: 1rem;
-  border-radius: 10px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--color-shadow) -10px 10px;
 }

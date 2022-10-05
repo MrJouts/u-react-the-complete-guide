@@ -1,6 +1,15 @@
 .title {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   font-size: 1.25rem;
-  padding: 0.15rem 0.75rem;
-  border-left: 4px solid var(--color-primary);
+  position: relative;
+  font-weight: bold;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 4px;
+    bottom: -5px;
+    background-color: var(--font-primary);
+  }
 }

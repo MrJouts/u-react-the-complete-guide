@@ -11,10 +11,15 @@
   font-weight: 400;
 
   /* colors */
-  --color-primary: #083AA9;
-  --color-primary-dark: #002E94;
-  --color-secondary: #FFE7CC;
-  --color-secondary-dark: #E1CEB5;
+  --font-primary: #10162f;
+
+  --color-primary: #3A10E5;
+  --color-primary-dark: #5533FF;
+  --color-secondary: rgb(255, 240, 229);
+  --color-white: rgb(255, 255, 255);
+
+  --color-border: rgb(16, 22, 47);
+  --color-shadow: rgb(16, 22, 47);
 
 
   font-synthesis: none;
@@ -29,6 +34,7 @@ body {
   justify-content: center;
   padding: 4rem;
   background-color: var(--color-secondary);
+  color: var(--font-primary)
 }
 
 /* Generales */
