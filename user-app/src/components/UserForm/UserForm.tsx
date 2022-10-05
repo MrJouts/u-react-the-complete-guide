@@ -7,9 +7,10 @@ import styles from "./UserForm.module.scss";
 
 type Props = {
   saveUser: Function;
+  throwError: Function;
 };
 
-const UserForm = ({ saveUser }: Props) => {
+const UserForm = ({ saveUser, throwError }: Props) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 
@@ -22,6 +23,26 @@ const UserForm = ({ saveUser }: Props) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if (name.trim().length === 0) {
+      throwError("Name cannot be empty.");
+      return;
+    }
+
+    if (age.trim().length === 0) {
+      throwError("Age cannot be empty.");
+      return;
+    }
+
+    if (+age <= 0) {
+      throwError("Age cannot be 0 or lower.");
+      return;
+    }
+
+    if (typeof +age != "number" || isNaN(+age)) {
+      throwError("Age must be a number.");
+      return;
+    }
+
     const newUser: User = {
       id: Math.random(),
       name,
@@ -29,6 +50,8 @@ const UserForm = ({ saveUser }: Props) => {
     };
 
     saveUser(newUser);
+    setName("");
+    setAge("");
   };
 
   return (

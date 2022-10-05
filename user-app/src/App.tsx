@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler, useState } from "react";
+import { MouseEvent, MouseEventHandler, SetStateAction, useState } from "react";
 import { User } from "./types";
 import { DEFAULT_USERS } from "./mocks/Users";
 import UserForm from "./components/UserForm/UserForm";
@@ -13,21 +13,6 @@ function App() {
   const handleSaveUser = (user: User) => {
     console.log(user);
 
-    if (user.name.trim().length === 0) {
-      setErrorMessage("Name cannot be empty.");
-      return;
-    }
-
-    if (user.age <= 0) {
-      setErrorMessage("Age cannot be 0 or lower.");
-      return;
-    }
-
-    if (typeof user.age != "number" || isNaN(user.age)) {
-      setErrorMessage("Age must be a number.");
-      return;
-    }
-
     setUsers((prevUsers) => [user, ...prevUsers]);
   };
 
@@ -39,7 +24,12 @@ function App() {
   return (
     <div className="user-app">
       <Title>Create user</Title>
-      <UserForm saveUser={handleSaveUser} />
+      <UserForm
+        saveUser={handleSaveUser}
+        throwError={(error: SetStateAction<string | null>) =>
+          setErrorMessage(error)
+        }
+      />
       <UserList users={users} />
       {errorMessage && (
         <Modal
