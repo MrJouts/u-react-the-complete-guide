@@ -57,8 +57,18 @@ const UserForm = ({ saveUser, throwError }: Props) => {
   return (
     <Card>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <UserFormInput label="Name" value={name} onChange={handleNameChange} />
-        <UserFormInput label="Age" value={age} onChange={handleAgeChange} />
+        <UserFormInput
+          type="text"
+          label="Name"
+          value={name}
+          onChange={handleNameChange}
+        />
+        <UserFormInput
+          type="number"
+          label="Age"
+          value={age}
+          onChange={handleAgeChange}
+        />
         <Button type="submit">Create user</Button>
       </form>
     </Card>
