@@ -4,10 +4,12 @@ import Card from "../UI/Card/Card";
 import styles from "./Modal.module.scss";
 
 type Props = {
+  title: string;
+  message: string;
   onClick: React.MouseEventHandler;
 };
 
-const Modal = ({ onClick }: Props) => {
+const Modal = ({ title, message, onClick }: Props) => {
   return (
     <div className={styles.modalBackdrop} onClick={onClick}>
       <Card
@@ -17,8 +19,8 @@ const Modal = ({ onClick }: Props) => {
         }}
       >
         <div className="cardContent">
-          <h2 className={styles.modalTitle}>Title</h2>
-          <div className={styles.modalContent}>this is the modal content</div>
+          <h2 className={styles.modalTitle}>{title}</h2>
+          <div className={styles.modalContent}>{message}</div>
           <Button type="button" onClick={onClick}>
             Close
           </Button>
