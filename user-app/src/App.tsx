@@ -4,8 +4,6 @@ import { DEFAULT_USERS } from "./mocks/Users";
 import UserForm from "./components/UserForm/UserForm";
 import UserList from "./components/UserList/UserList";
 
-import "./App.css";
-
 function App() {
   const [users, setUsers] = useState(DEFAULT_USERS);
 
