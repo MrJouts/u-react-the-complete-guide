@@ -1,4 +1,5 @@
 import { User } from "../../types";
+import UserListItem from "../UserListItem/UserListItem";
 import styles from "./UserList.module.scss";
 
 type Props = {
@@ -9,10 +10,8 @@ const UserList = ({ users }: Props) => {
   return (
     <div className={styles.card}>
       <ul>
-        {users.map(({ id, name, age }) => (
-          <li key={id}>
-            {name} ({age})
-          </li>
+        {users.map((user) => (
+          <UserListItem key={user.id} {...user} />
         ))}
       </ul>
     </div>
