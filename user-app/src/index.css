@@ -29,3 +29,7 @@ body {
   justify-content: center;
   padding: 4rem;
 }
+
+ul {
+  list-style-type: none;
+}

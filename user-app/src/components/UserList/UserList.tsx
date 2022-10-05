@@ -7,13 +7,14 @@ type Props = {
 
 const UserList = ({ users }: Props) => {
   return (
-    <div className={styles.test}>
-      {users.map(({ id, name, age }) => (
-        <div key={id}>
-          <span>{name}</span>
-          <span>{age}</span>
-        </div>
-      ))}
+    <div className={styles.card}>
+      <ul>
+        {users.map(({ id, name, age }) => (
+          <li key={id}>
+            {name} ({age})
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
