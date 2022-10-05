@@ -8,27 +8,22 @@ import Modal from "./components/Modal/Modal";
 
 function App() {
   const [users, setUsers] = useState(DEFAULT_USERS);
-
-  const [isFormError, setIsFormError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<null | string>(null);
 
   const handleSaveUser = (user: User) => {
     console.log(user);
 
-    if (user.name.length === 0) {
-      setIsFormError(true);
+    if (user.name.trim().length === 0) {
       setErrorMessage("Name cannot be empty.");
       return;
     }
 
     if (user.age <= 0) {
-      setIsFormError(true);
       setErrorMessage("Age cannot be 0 or lower.");
       return;
     }
 
     if (typeof user.age != "number" || isNaN(user.age)) {
-      setIsFormError(true);
       setErrorMessage("Age must be a number.");
       return;
     }
@@ -37,10 +32,8 @@ function App() {
   };
 
   const toggleModal = (e: MouseEvent) => {
-    console.log("click btn");
-
     e.stopPropagation();
-    setIsFormError((isFormError) => !isFormError);
+    setErrorMessage(null);
   };
 
   return (
@@ -48,7 +41,7 @@ function App() {
       <Title>Create user</Title>
       <UserForm saveUser={handleSaveUser} />
       <UserList users={users} />
-      {isFormError && (
+      {errorMessage && (
         <Modal
           onClick={toggleModal}
           title="Ops! an error occurred"
