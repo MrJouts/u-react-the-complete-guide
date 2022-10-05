@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { User } from "../../types";
 import Button from "../UI/Button/Button";
+import UserFormInput from "../UserFormInput/UserFormInput";
 import styles from "./UserForm.module.scss";
 
 type Props = {
@@ -31,14 +32,8 @@ const UserForm = ({ saveUser }: Props) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.formControl}>
-        <label htmlFor="name">Name</label>
-        <input type="text" value={name} onChange={handleNameChange} />
-      </div>
-      <div className={styles.formControl}>
-        <label htmlFor="age">Age</label>
-        <input type="text" value={age} onChange={handleAgeChange} />
-      </div>
+      <UserFormInput label="Name" value={name} onChange={handleNameChange} />
+      <UserFormInput label="Age" value={age} onChange={handleAgeChange} />
       <Button type="submit">Create user</Button>
     </form>
   );
