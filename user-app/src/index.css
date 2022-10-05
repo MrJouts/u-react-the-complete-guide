@@ -28,8 +28,10 @@ body {
   display: flex;
   justify-content: center;
   padding: 4rem;
+  background-color: var(--color-secondary);
 }
 
+/* Generales */
 ul {
   list-style-type: none;
 }

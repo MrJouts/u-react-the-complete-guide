@@ -1,6 +1,6 @@
 import { User } from "../../types";
+import Card from "../UI/Card/Card";
 import UserListItem from "../UserListItem/UserListItem";
-import styles from "./UserList.module.scss";
 
 type Props = {
   users: User[];
@@ -8,13 +8,13 @@ type Props = {
 
 const UserList = ({ users }: Props) => {
   return (
-    <div className={styles.card}>
+    <Card>
       <ul>
         {users.map((user) => (
           <UserListItem key={user.id} {...user} />
         ))}
       </ul>
-    </div>
+    </Card>
   );
 };
 
