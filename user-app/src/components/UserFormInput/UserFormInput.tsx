@@ -4,20 +4,14 @@ import styles from "./UserFormInput.module.scss";
 type Props = {
   type: string;
   label: string;
-  value: string;
-  onChange: ChangeEventHandler;
+  innerRef: any;
 };
 
-const UserFormInput = ({
-  type,
-  label,
-  value,
-  onChange,
-}: Props): JSX.Element => {
+const UserFormInput = ({ type, label, innerRef }: Props): JSX.Element => {
   return (
     <div className={styles.formControl}>
       <label htmlFor={label}>{label}</label>
-      <input id={label} type={type} value={value} onChange={onChange} />
+      <input id={label} type={type} ref={innerRef} />
     </div>
   );
 };
