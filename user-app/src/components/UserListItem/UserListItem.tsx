@@ -1,5 +1,3 @@
-import styles from "./UserListItem.module.scss";
-
 type Props = {
   name: string;
   age: number;
@@ -8,7 +6,7 @@ type Props = {
 const UserListItem = ({ name, age }: Props): JSX.Element => {
   return (
     <li>
-      {name} ({age})
+      {name} ({age} years old)
     </li>
   );
 };

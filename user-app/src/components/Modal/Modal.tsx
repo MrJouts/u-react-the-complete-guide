@@ -1,4 +1,3 @@
-import { MouseEventHandler, ReactElement, ReactPortal } from "react";
 import ReactDOM from "react-dom";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";

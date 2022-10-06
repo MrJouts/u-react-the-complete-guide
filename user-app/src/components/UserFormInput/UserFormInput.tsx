@@ -1,4 +1,4 @@
-import { ChangeEventHandler, InputHTMLAttributes } from "react";
+import { ChangeEventHandler } from "react";
 import styles from "./UserFormInput.module.scss";
 
 type Props = {

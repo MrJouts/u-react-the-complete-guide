@@ -3,7 +3,6 @@ import { User } from "../../types";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
 import UserFormInput from "../UserFormInput/UserFormInput";
-import styles from "./UserForm.module.scss";
 
 type Props = {
   saveUser: Function;
@@ -56,7 +55,7 @@ const UserForm = ({ saveUser, throwError }: Props) => {
 
   return (
     <Card>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleSubmit}>
         <UserFormInput
           type="text"
           label="Name"

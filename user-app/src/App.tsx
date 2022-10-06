@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler, SetStateAction, useState } from "react";
+import { MouseEvent, SetStateAction, useState } from "react";
 import { User } from "./types";
 import { DEFAULT_USERS } from "./mocks/Users";
 import UserForm from "./components/UserForm/UserForm";
