@@ -18,4 +18,8 @@
 .modalCard {
   min-width: 350px;
   width: 350px;
+  position: absolute;
+  top: 30vh;
+  left: 50%;
+  transform: translateX(-50%);
 }
