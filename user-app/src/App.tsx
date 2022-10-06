@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <div className="user-app">
+    <>
       <Title>Create user</Title>
       <UserForm
         saveUser={handleSaveUser}
@@ -38,7 +38,7 @@ function App() {
           message={errorMessage}
         />
       )}
-    </div>
+    </>
   );
 }
 
