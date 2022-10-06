@@ -13,6 +13,7 @@ const Modal = ({ title, message, onClick }: Props) => {
   return (
     <div className={styles.modalBackdrop} onClick={onClick}>
       <Card
+        className={styles.modalCard}
         onClick={(e: Event) => {
           e.stopPropagation();
           return false;
