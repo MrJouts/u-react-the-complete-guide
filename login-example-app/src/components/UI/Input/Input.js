@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useImperativeHandle, useRef } from "react";
 
 import classes from "./Input.module.css";
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
   const { isValid, value, id, label, type, onChange, onBlur } = props;
+  const inputRef = useRef();
+
+  const activate = () => {
+    inputRef.current.focus();
+  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus: activate,
+    };
+  });
 
   return (
     <div
@@ -18,9 +29,10 @@ const Input = (props) => {
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        ref={inputRef}
       />
     </div>
   );
-};
+});
 
 export default Input;
