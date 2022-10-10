@@ -1,7 +1,11 @@
 import classes from "./Card.module.scss";
 
-const Card = () => {
-  return <div className={classes.card}>Card content</div>;
+type Props = {
+  children: JSX.Element | string;
+};
+
+const Card = ({ children }: Props) => {
+  return <div className={classes.card}>{children}</div>;
 };
 
 export default Card;
