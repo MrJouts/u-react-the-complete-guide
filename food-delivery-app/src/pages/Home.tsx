@@ -1,11 +1,12 @@
 import Header from "../components/Header/Header";
+import MealsSummary from "../components/MealsSummary/MealsSummary";
 import Card from "../components/UI/Card/Card";
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <p>Home content</p>
+      <MealsSummary />
       <Card />
     </div>
   );
