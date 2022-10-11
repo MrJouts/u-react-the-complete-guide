@@ -13,9 +13,7 @@ const Home = ({ meals }: Props) => {
     <div>
       <Header />
       <MealsSummary />
-      <Card>
-        <AvailableMeals />
-      </Card>
+      <AvailableMeals meals={meals} />
     </div>
   );
 };
