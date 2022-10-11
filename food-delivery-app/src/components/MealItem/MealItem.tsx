@@ -1,12 +1,23 @@
-import classes from "MealItem.module.scss";
+import classes from "./MealItem.module.scss";
 import MealItemForm from "../MealItemForm/MealItemForm";
+import { meal } from "../../types";
 
-const MealItem = () => {
+type Props = {
+  meal: meal;
+};
+
+const MealItem = ({ meal }: Props) => {
+  const { name, description, price } = meal;
+
   return (
-    <div>
-      MealItem
+    <li className={classes.meal}>
+      <div>
+        <h3>{name}</h3>
+        <div className={classes.description}>{description}</div>
+        <div className={classes.price}>{price}</div>
+      </div>
       <MealItemForm />
-    </div>
+    </li>
   );
 };
 

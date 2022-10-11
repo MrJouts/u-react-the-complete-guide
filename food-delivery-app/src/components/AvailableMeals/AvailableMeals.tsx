@@ -13,7 +13,7 @@ const AvailableMeals = ({ meals }: Props) => {
       <Card>
         <ul>
           {meals.map((meal) => (
-            <MealItem key={meal.id} {...meal} />
+            <MealItem key={meal.id} meal={meal} />
           ))}
         </ul>
       </Card>
