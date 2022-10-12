@@ -5,11 +5,18 @@ import mealsImage from "../../assets/meals.jpg";
 import { CartItem } from "../../types";
 
 type Props = {
-  cartItems: CartItem[];
+  cartItems: CartItem[] | null;
 };
 
 const Header = ({ cartItems }: Props) => {
-  const getCartItemsAmount = (): number => 1;
+  const getCartItemsAmount = (): number => {
+    let totalAmount = 0;
+    cartItems?.forEach((item) => {
+      totalAmount += +item.amount;
+    });
+
+    return totalAmount;
+  };
 
   return (
     <>

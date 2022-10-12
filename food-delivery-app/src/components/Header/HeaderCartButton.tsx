@@ -5,7 +5,7 @@ type Props = {
   cartItemsAmount: number;
 };
 
-const HeaderCartButton = ({ cartItemsAmount = 0 }: Props) => {
+const HeaderCartButton = ({ cartItemsAmount }: Props) => {
   return (
     <button className={classes.button}>
       <CartIcon className={classes.icon} />
