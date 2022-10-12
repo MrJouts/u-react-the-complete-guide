@@ -4,3 +4,10 @@ export type meal = {
   description: string;
   price: number;
 };
+
+export type CartItem = {
+  id?: string;
+  name: string;
+  price: number;
+  amount: number;
+};

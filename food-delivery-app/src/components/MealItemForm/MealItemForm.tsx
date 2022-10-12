@@ -2,22 +2,20 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import Input from "../UI/Input/Input";
 import classes from "./MealItemForm.module.scss";
 
-const MealItemForm = () => {
+type Props = {
+  addMealAmount: Function;
+};
+
+const MealItemForm = ({ addMealAmount }: Props) => {
   const [amount, setAmount] = useState<string>("1");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    // agrego un objeto meal al carrito
-    // tener en cuenta la quantity
-    console.log("meal added...", amount);
+    addMealAmount(amount);
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
     setAmount(e.target.value);
-    console.log("amount", amount);
-  };
 
   return (
     <form className={classes.form} onSubmit={handleSubmit}>

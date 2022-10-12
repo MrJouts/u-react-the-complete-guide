@@ -4,9 +4,10 @@ import { meal } from "../../types";
 
 type Props = {
   meal: meal;
+  addMealToCart: Function;
 };
 
-const MealItem = ({ meal }: Props) => {
+const MealItem = ({ meal, addMealToCart }: Props) => {
   const { name, description, price } = meal;
 
   return (
@@ -16,7 +17,9 @@ const MealItem = ({ meal }: Props) => {
         <div className={classes.description}>{description}</div>
         <div className={classes.price}>{price}</div>
       </div>
-      <MealItemForm />
+      <MealItemForm
+        addMealAmount={(amount: number) => addMealToCart(amount, name, price)}
+      />
     </li>
   );
 };

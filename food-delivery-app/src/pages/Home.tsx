@@ -6,14 +6,15 @@ import { meal } from "../types";
 
 type Props = {
   meals: meal[];
+  addMealToCart: Function;
 };
 
-const Home = ({ meals }: Props) => {
+const Home = ({ meals, addMealToCart }: Props) => {
   return (
     <div>
       <Header />
       <MealsSummary />
-      <AvailableMeals meals={meals} />
+      <AvailableMeals meals={meals} addMealToCart={addMealToCart} />
     </div>
   );
 };
