@@ -1,4 +1,3 @@
-import Home from "./pages/Home";
 import { useState } from "react";
 
 import { CartItem, meal } from "./types";
@@ -7,7 +6,6 @@ import { DUMMY_MEALS } from "./mocks/meals";
 import AvailableMeals from "./components/AvailableMeals/AvailableMeals";
 import Header from "./components/Header/Header";
 import MealsSummary from "./components/MealsSummary/MealsSummary";
-import Modal from "./components/UI/Modal/Modal";
 
 function App() {
   const [meals, setMeals] = useState<meal[]>(DUMMY_MEALS);
