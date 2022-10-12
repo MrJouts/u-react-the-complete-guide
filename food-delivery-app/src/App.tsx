@@ -4,6 +4,10 @@ import { useState } from "react";
 import { CartItem, meal } from "./types";
 import { DUMMY_MEALS } from "./mocks/meals";
 
+import AvailableMeals from "./components/AvailableMeals/AvailableMeals";
+import Header from "./components/Header/Header";
+import MealsSummary from "./components/MealsSummary/MealsSummary";
+
 function App() {
   const [meals, setMeals] = useState<meal[]>(DUMMY_MEALS);
   const [cartItems, setCartItems] = useState<CartItem[] | null>(null);
@@ -24,7 +28,9 @@ function App() {
 
   return (
     <>
-      <Home meals={meals} addMealToCart={addMealToCart} />
+      <Header cartItems={cartItems} />
+      <MealsSummary />
+      <AvailableMeals meals={meals} addMealToCart={addMealToCart} />
     </>
   );
 }

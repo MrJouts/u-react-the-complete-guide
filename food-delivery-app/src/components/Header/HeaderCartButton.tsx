@@ -1,12 +1,16 @@
 import CartIcon from "./CartIcon";
 import classes from "./HeaderCartButton.module.scss";
 
-const HeaderCartButton = () => {
+type Props = {
+  cartItemsAmount: number;
+};
+
+const HeaderCartButton = ({ cartItemsAmount = 0 }: Props) => {
   return (
     <button className={classes.button}>
       <CartIcon className={classes.icon} />
       Your Cart
-      <span className={classes.badge}>1</span>
+      <span className={classes.badge}>{cartItemsAmount}</span>
     </button>
   );
 };
