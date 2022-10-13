@@ -3,11 +3,10 @@ import { useState } from "react";
 import { CartItem, meal } from "./types";
 import { DUMMY_MEALS } from "./mocks/meals";
 
-import AvailableMeals from "./components/AvailableMeals/AvailableMeals";
 import Header from "./components/Layout/Header";
-import MealsSummary from "./components/MealsSummary/MealsSummary";
 import Modal from "./components/UI/Modal/Modal";
 import Cart from "./components/Cart/Cart";
+import Meals from "./components/Meals/Meals";
 
 function App() {
   const [meals, setMeals] = useState<meal[]>(DUMMY_MEALS);
@@ -51,8 +50,7 @@ function App() {
         </Modal>
       )}
       <Header cartItems={cartItems} openModal={openModal} />
-      <MealsSummary />
-      <AvailableMeals meals={meals} addMealToCart={addMealToCart} />
+      <Meals meals={meals} addMealToCart={addMealToCart} />
     </>
   );
 }
