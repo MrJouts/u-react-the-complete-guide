@@ -3,10 +3,11 @@ import Input from "../UI/Input";
 import classes from "./MealItemForm.module.scss";
 
 type Props = {
+  id: string;
   addMealAmount: Function;
 };
 
-const MealItemForm = ({ addMealAmount }: Props) => {
+const MealItemForm = ({ id, addMealAmount }: Props) => {
   const [amount, setAmount] = useState<string>("1");
 
   const handleSubmit = (e: FormEvent) => {
@@ -20,11 +21,16 @@ const MealItemForm = ({ addMealAmount }: Props) => {
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
       <Input
-        id="amount"
         label="Amount"
-        type="number"
-        value={amount}
-        onChange={handleInputChange}
+        input={{
+          id: `amount-${id}`,
+          type: "number",
+          value: amount,
+          min: "1",
+          max: "5",
+          step: "1",
+          onChange: handleInputChange,
+        }}
       />
       <button type="submit">+ Add</button>
     </form>

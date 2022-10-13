@@ -1,19 +1,35 @@
-import { useState } from "react";
 import classes from "./Input.module.scss";
 
-type Props = {
+type InputProps = {
   id: string;
-  label: string;
   type: string;
   value: string;
+  min?: string;
+  max?: string;
+  step?: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const Input = ({ id, label, type, value, onChange }: Props) => {
+type Props = {
+  label: string;
+  input: InputProps;
+};
+
+const Input = ({ label, input }: Props) => {
+  const { id, type, value, min, max, step, onChange } = input;
+
   return (
     <div className={classes.input}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} type={type} value={value} onChange={onChange} />
+      <input
+        id={id}
+        type={type}
+        value={value}
+        min={min}
+        max={max}
+        step={step}
+        onChange={onChange}
+      />
     </div>
   );
 };
