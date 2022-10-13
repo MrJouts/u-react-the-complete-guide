@@ -4,7 +4,7 @@ import { CartItem, meal } from "./types";
 import { DUMMY_MEALS } from "./mocks/meals";
 
 import AvailableMeals from "./components/AvailableMeals/AvailableMeals";
-import Header from "./components/Header/Header";
+import Header from "./components/Layout/Header";
 import MealsSummary from "./components/MealsSummary/MealsSummary";
 import Modal from "./components/UI/Modal/Modal";
 import Cart from "./components/Cart/Cart";

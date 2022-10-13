@@ -1,4 +1,4 @@
-import CartIcon from "./CartIcon";
+import CartIcon from "../Cart/CartIcon";
 import classes from "./HeaderCartButton.module.scss";
 
 type Props = {
@@ -9,8 +9,10 @@ type Props = {
 const HeaderCartButton = ({ cartItemsAmount, onClick }: Props) => {
   return (
     <button className={classes.button} onClick={onClick}>
-      <CartIcon className={classes.icon} />
-      Your Cart
+      <span className={classes.icon}>
+        <CartIcon />
+      </span>
+      <span>Your Cart</span>
       <span className={classes.badge}>{cartItemsAmount}</span>
     </button>
   );
