@@ -21,13 +21,13 @@ const Header = ({ cartItems, openModal }: Props) => {
 
   return (
     <>
-      <div className={classes.header}>
-        <h2>React Meals</h2>
+      <header className={classes.header}>
+        <h1>React Meals</h1>
         <HeaderCartButton
           cartItemsAmount={getCartItemsAmount()}
           onClick={openModal}
         />
-      </div>
+      </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="meals" />
       </div>
