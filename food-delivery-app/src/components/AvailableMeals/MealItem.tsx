@@ -1,5 +1,5 @@
 import classes from "./MealItem.module.scss";
-import MealItemForm from "../MealItemForm/MealItemForm";
+import MealItemForm from "./MealItemForm";
 import { meal } from "../../types";
 
 type Props = {
