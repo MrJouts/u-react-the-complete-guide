@@ -3,7 +3,7 @@ import classes from "./Cart.module.scss";
 import CartItem from "./CartItem";
 
 type Props = {
-  cartItems: ICartItem[];
+  cartItems?: ICartItem[];
   onClick: () => void;
 };
 
@@ -11,7 +11,7 @@ const Cart = ({ cartItems, onClick }: Props) => {
   return (
     <>
       <div className={classes["cart-items"]}>
-        {cartItems.map((cart) => (
+        {cartItems?.map((cart) => (
           <CartItem key={cart.name} {...cart} />
         ))}
       </div>

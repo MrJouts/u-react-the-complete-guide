@@ -17,15 +17,26 @@ function App() {
   const addMealToCart = (amount: number, name: string, price: number) => {
     const newCartItem: CartItem = {
       name,
-      amount,
+      amount: +amount,
       price: price,
     };
 
-    setCartItems((prevItems) =>
-      prevItems ? [newCartItem, ...prevItems] : [newCartItem]
-    );
+    let newItems: CartItem[] = [];
 
-    console.log("cartItem", newCartItem);
+    if (cartItems === null) {
+      newItems = [newCartItem];
+    } else if (cartItems.find((cart) => cart.name == name)) {
+      newItems = cartItems.map((cart) => {
+        if (cart.name == name) {
+          cart.amount += +amount;
+        }
+        return cart;
+      });
+    } else {
+      newItems = cartItems.concat(newCartItem);
+    }
+
+    setCartItems((prevItems) => (prevItems = newItems));
   };
 
   const openModal = () => setShowModal(true);
