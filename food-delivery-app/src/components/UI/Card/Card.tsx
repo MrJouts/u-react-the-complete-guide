@@ -1,7 +1,7 @@
 import classes from "./Card.module.scss";
 
 type Props = {
-  children: JSX.Element | string;
+  children: JSX.Element | JSX.Element[] | string;
 };
 
 const Card = ({ children }: Props) => {

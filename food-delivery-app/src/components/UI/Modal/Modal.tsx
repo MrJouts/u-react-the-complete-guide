@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import Cart from "../../Cart/Cart";
 import classes from "./Modal.module.scss";
 
 type Props = {
   onClick: React.MouseEventHandler;
+  children: JSX.Element | JSX.Element[];
 };
 
 type BackdropProps = {
@@ -12,20 +12,18 @@ type BackdropProps = {
 };
 
 type ModalOverlayProps = {
-  onClick: React.MouseEventHandler;
+  children: JSX.Element | JSX.Element[];
 };
 
 const Backdrop = ({ onClick }: BackdropProps) => (
   <div className={classes.backdrop} onClick={onClick}></div>
 );
 
-const ModalOverlay = (): JSX.Element => (
-  <div className={classes.modal}>
-    <Cart />
-  </div>
+const ModalOverlay = ({ children }: ModalOverlayProps): JSX.Element => (
+  <div className={classes.modal}>{children}</div>
 );
 
-const Modal = ({ onClick }: Props) => {
+const Modal = ({ onClick, children }: Props) => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -34,7 +32,7 @@ const Modal = ({ onClick }: Props) => {
       )}
 
       {ReactDOM.createPortal(
-        <ModalOverlay />,
+        <ModalOverlay>{children}</ModalOverlay>,
         document.getElementById("modal-overlay")!
       )}
     </>

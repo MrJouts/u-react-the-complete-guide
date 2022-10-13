@@ -7,6 +7,7 @@ import AvailableMeals from "./components/AvailableMeals/AvailableMeals";
 import Header from "./components/Header/Header";
 import MealsSummary from "./components/MealsSummary/MealsSummary";
 import Modal from "./components/UI/Modal/Modal";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   const [meals, setMeals] = useState<meal[]>(DUMMY_MEALS);
@@ -33,7 +34,11 @@ function App() {
 
   return (
     <>
-      {showModal && <Modal onClick={closeModal} />}
+      {showModal && (
+        <Modal onClick={closeModal}>
+          <Cart onClick={closeModal} />
+        </Modal>
+      )}
       <Header cartItems={cartItems} openModal={openModal} />
       <MealsSummary />
       <AvailableMeals meals={meals} addMealToCart={addMealToCart} />
