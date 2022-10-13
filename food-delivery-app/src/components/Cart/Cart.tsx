@@ -3,17 +3,27 @@ import classes from "./Cart.module.scss";
 import CartItem from "./CartItem";
 
 type Props = {
-  cartItems?: ICartItem[];
+  cartItems: ICartItem[] | null;
   onClick: () => void;
 };
 
 const Cart = ({ cartItems, onClick }: Props) => {
+  let total = 0;
+
+  cartItems?.forEach((cart) => {
+    total += cart.price * cart.amount;
+  });
+
   return (
     <>
       <div className={classes["cart-items"]}>
         {cartItems?.map((cart) => (
           <CartItem key={cart.name} {...cart} />
         ))}
+        <div className={classes.total}>
+          <span>Total Amount</span>
+          <span>${total.toFixed(2)}</span>
+        </div>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={onClick}>
