@@ -9,14 +9,14 @@ type Props = {
 };
 
 const AvailableMeals = ({ meals, addMealToCart }: Props) => {
+  const mealsList = meals.map((meal) => (
+    <MealItem key={meal.id} meal={meal} addMealToCart={addMealToCart} />
+  ));
+
   return (
     <div className={classes.meals}>
       <Card>
-        <ul>
-          {meals.map((meal) => (
-            <MealItem key={meal.id} meal={meal} addMealToCart={addMealToCart} />
-          ))}
-        </ul>
+        <ul>{mealsList}</ul>
       </Card>
     </div>
   );

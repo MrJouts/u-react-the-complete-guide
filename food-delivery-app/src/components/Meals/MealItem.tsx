@@ -8,7 +8,8 @@ type Props = {
 };
 
 const MealItem = ({ meal, addMealToCart }: Props) => {
-  const { name, description, price } = meal;
+  const { name, description } = meal;
+  const price = `$${meal.price.toFixed(2)}`;
 
   return (
     <li className={classes.meal}>
