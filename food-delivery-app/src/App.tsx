@@ -36,7 +36,7 @@ function App() {
     <>
       {showModal && (
         <Modal onClick={closeModal}>
-          <Cart onClick={closeModal} />
+          <Cart onClick={closeModal} cartItems={cartItems} />
         </Modal>
       )}
       <Header cartItems={cartItems} openModal={openModal} />
