@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import Input from "../UI/Input/Input";
+import Input from "../UI/Input";
 import classes from "./MealItemForm.module.scss";
 
 type Props = {

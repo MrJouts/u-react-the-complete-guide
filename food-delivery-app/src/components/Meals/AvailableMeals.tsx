@@ -1,7 +1,7 @@
 import MealItem from "./MealItem";
 import classes from "./AvailableMeals.module.scss";
 import { meal } from "../../types";
-import Card from "../UI/Card/Card";
+import Card from "../UI/Card";
 
 type Props = {
   meals: meal[];
