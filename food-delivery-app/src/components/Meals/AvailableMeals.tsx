@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 
 type Props = {
   meals: meal[];
-  addMealToCart: Function;
+  addMealToCart: () => void;
 };
 
 const AvailableMeals = ({ meals, addMealToCart }: Props) => {

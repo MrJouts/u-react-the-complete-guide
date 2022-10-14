@@ -10,23 +10,16 @@ type Props = {
 };
 
 const Header = ({ cartItems, onShowCart }: Props) => {
-  const getCartItemsAmount = (): number => {
-    let totalAmount = 0;
-    cartItems?.forEach((item) => {
-      totalAmount += +item.amount;
-    });
-
-    return totalAmount;
-  };
+  // TODO: remove after Context I
+  const totalAmount = cartItems
+    ? cartItems?.reduce((acc, item) => acc + item.amount, 0)
+    : 0;
 
   return (
     <>
       <header className={classes.header}>
         <h1>React Meals</h1>
-        <HeaderCartButton
-          cartItemsAmount={getCartItemsAmount()}
-          onClick={onShowCart}
-        />
+        <HeaderCartButton cartItemsAmount={totalAmount} onClick={onShowCart} />
       </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="meals" />

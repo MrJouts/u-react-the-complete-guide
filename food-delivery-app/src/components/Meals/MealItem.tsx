@@ -4,7 +4,6 @@ import { meal } from "../../types";
 
 type Props = {
   meal: meal;
-  price: number;
   addMealToCart: Function;
 };
 

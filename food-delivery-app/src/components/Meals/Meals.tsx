@@ -4,7 +4,7 @@ import { meal } from "../../types";
 
 type Props = {
   meals: meal[];
-  addMealToCart: Function;
+  addMealToCart: () => void;
 };
 
 const Meals = ({ meals, addMealToCart }: Props) => {
