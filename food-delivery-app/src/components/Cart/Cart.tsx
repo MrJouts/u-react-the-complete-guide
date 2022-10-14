@@ -20,11 +20,12 @@ const Cart = ({ cartItems, onClick }: Props) => {
         {cartItems?.map((cart) => (
           <CartItem key={cart.name} {...cart} />
         ))}
-        <div className={classes.total}>
-          <span>Total Amount</span>
-          <span>${total.toFixed(2)}</span>
-        </div>
       </div>
+      <div className={classes.total}>
+        <span>Total Amount</span>
+        <span>${total.toFixed(2)}</span>
+      </div>
+
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={onClick}>
           Close

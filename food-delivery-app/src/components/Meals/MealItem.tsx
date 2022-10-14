@@ -4,19 +4,20 @@ import { meal } from "../../types";
 
 type Props = {
   meal: meal;
+  price: number;
   addMealToCart: Function;
 };
 
 const MealItem = ({ meal, addMealToCart }: Props) => {
-  const { name, description } = meal;
-  const price = `$${meal.price.toFixed(2)}`;
+  const { name, price, description } = meal;
+  const formattedPrice = `$${price.toFixed(2)}`;
 
   return (
     <li className={classes.meal}>
       <div>
         <h3>{name}</h3>
         <div className={classes.description}>{description}</div>
-        <div className={classes.price}>{price}</div>
+        <div className={classes.price}>{formattedPrice}</div>
       </div>
       <MealItemForm
         id={meal.id}
