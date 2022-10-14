@@ -10,7 +10,7 @@ import Meals from "./components/Meals/Meals";
 function App() {
   const [meals, setMeals] = useState<meal[]>(DUMMY_MEALS);
   const [cartItems, setCartItems] = useState<CartItem[] | null>(null);
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [cartIsShown, setCartIsShown] = useState<boolean>(false);
 
   const addMealToCart = (amount: number, name: string, price: number) => {
     const newCartItem: CartItem = {
@@ -37,14 +37,14 @@ function App() {
     setCartItems((prevItems) => (prevItems = newItems));
   };
 
-  const openModal = () => setShowModal(true);
+  const showCart = () => setCartIsShown(true);
 
-  const closeModal = () => setShowModal(false);
+  const hideCart = () => setCartIsShown(false);
 
   return (
     <>
-      {showModal && <Cart onClick={closeModal} cartItems={cartItems} />}
-      <Header cartItems={cartItems} openModal={openModal} />
+      {cartIsShown && <Cart onClose={hideCart} cartItems={cartItems} />}
+      <Header cartItems={cartItems} onShowCart={showCart} />
       <Meals meals={meals} addMealToCart={addMealToCart} />
     </>
   );

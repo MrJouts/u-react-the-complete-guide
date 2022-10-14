@@ -3,20 +3,20 @@ import React from "react";
 import classes from "./Modal.module.scss";
 
 type Props = {
-  onClick: React.MouseEventHandler;
+  onClose: React.MouseEventHandler;
   children: JSX.Element | JSX.Element[];
 };
 
 type BackdropProps = {
-  onClick: React.MouseEventHandler;
+  onClose: React.MouseEventHandler;
 };
 
 type ModalOverlayProps = {
   children: JSX.Element | JSX.Element[];
 };
 
-const Backdrop = ({ onClick }: BackdropProps) => (
-  <div className={classes.backdrop} onClick={onClick}></div>
+const Backdrop = ({ onClose }: BackdropProps) => (
+  <div className={classes.backdrop} onClick={onClose}></div>
 );
 
 const ModalOverlay = ({ children }: ModalOverlayProps): JSX.Element => (
@@ -25,10 +25,10 @@ const ModalOverlay = ({ children }: ModalOverlayProps): JSX.Element => (
 
 const portalElement = document.getElementById("overlays");
 
-const Modal = ({ onClick, children }: Props) => {
+const Modal = ({ onClose, children }: Props) => {
   return (
     <>
-      {ReactDOM.createPortal(<Backdrop onClick={onClick} />, portalElement!)}
+      {ReactDOM.createPortal(<Backdrop onClose={onClose} />, portalElement!)}
 
       {ReactDOM.createPortal(
         <ModalOverlay>{children}</ModalOverlay>,

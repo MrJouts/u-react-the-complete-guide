@@ -6,10 +6,10 @@ import { CartItem } from "../../types";
 
 type Props = {
   cartItems: CartItem[] | null;
-  openModal: () => void;
+  onShowCart: () => void;
 };
 
-const Header = ({ cartItems, openModal }: Props) => {
+const Header = ({ cartItems, onShowCart }: Props) => {
   const getCartItemsAmount = (): number => {
     let totalAmount = 0;
     cartItems?.forEach((item) => {
@@ -25,7 +25,7 @@ const Header = ({ cartItems, openModal }: Props) => {
         <h1>React Meals</h1>
         <HeaderCartButton
           cartItemsAmount={getCartItemsAmount()}
-          onClick={openModal}
+          onClick={onShowCart}
         />
       </header>
       <div className={classes["main-image"]}>

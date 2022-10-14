@@ -5,10 +5,10 @@ import CartItem from "./CartItem";
 
 type Props = {
   cartItems: ICartItem[] | null;
-  onClick: () => void;
+  onClose: () => void;
 };
 
-const Cart = ({ cartItems, onClick }: Props) => {
+const Cart = ({ cartItems, onClose }: Props) => {
   let total = 0;
 
   cartItems?.forEach((cart) => {
@@ -16,7 +16,7 @@ const Cart = ({ cartItems, onClick }: Props) => {
   });
 
   return (
-    <Modal onClick={onClick}>
+    <Modal onClose={onClose}>
       <div className={classes["cart-items"]}>
         {cartItems?.map((cart) => (
           <CartItem key={cart.name} {...cart} />
@@ -28,7 +28,7 @@ const Cart = ({ cartItems, onClick }: Props) => {
       </div>
 
       <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={onClick}>
+        <button className={classes["button--alt"]} onClick={onClose}>
           Close
         </button>
         <button className={classes.button}>Order</button>
