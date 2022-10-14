@@ -23,17 +23,16 @@ const ModalOverlay = ({ children }: ModalOverlayProps): JSX.Element => (
   <div className={classes.modal}>{children}</div>
 );
 
+const portalElement = document.getElementById("overlays");
+
 const Modal = ({ onClick, children }: Props) => {
   return (
     <>
-      {ReactDOM.createPortal(
-        <Backdrop onClick={onClick} />,
-        document.getElementById("backdrop-root")!
-      )}
+      {ReactDOM.createPortal(<Backdrop onClick={onClick} />, portalElement!)}
 
       {ReactDOM.createPortal(
         <ModalOverlay>{children}</ModalOverlay>,
-        document.getElementById("modal-overlay")!
+        portalElement!
       )}
     </>
   );

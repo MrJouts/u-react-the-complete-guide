@@ -1,4 +1,5 @@
 import { CartItem as ICartItem } from "../../types";
+import Modal from "../UI/Modal";
 import classes from "./Cart.module.scss";
 import CartItem from "./CartItem";
 
@@ -15,7 +16,7 @@ const Cart = ({ cartItems, onClick }: Props) => {
   });
 
   return (
-    <>
+    <Modal onClick={onClick}>
       <div className={classes["cart-items"]}>
         {cartItems?.map((cart) => (
           <CartItem key={cart.name} {...cart} />
@@ -32,7 +33,7 @@ const Cart = ({ cartItems, onClick }: Props) => {
         </button>
         <button className={classes.button}>Order</button>
       </div>
-    </>
+    </Modal>
   );
 };
 

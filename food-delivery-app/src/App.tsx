@@ -4,7 +4,6 @@ import { CartItem, meal } from "./types";
 import { DUMMY_MEALS } from "./mocks/meals";
 
 import Header from "./components/Layout/Header";
-import Modal from "./components/UI/Modal/Modal";
 import Cart from "./components/Cart/Cart";
 import Meals from "./components/Meals/Meals";
 
@@ -44,11 +43,7 @@ function App() {
 
   return (
     <>
-      {showModal && (
-        <Modal onClick={closeModal}>
-          <Cart onClick={closeModal} cartItems={cartItems} />
-        </Modal>
-      )}
+      {showModal && <Cart onClick={closeModal} cartItems={cartItems} />}
       <Header cartItems={cartItems} openModal={openModal} />
       <Meals meals={meals} addMealToCart={addMealToCart} />
     </>
