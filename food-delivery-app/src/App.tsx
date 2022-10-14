@@ -6,6 +6,7 @@ import { DUMMY_MEALS } from "./mocks/meals";
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
 import Meals from "./components/Meals/Meals";
+import CartProvider from "./store/CartProvider";
 
 function App() {
   const [meals, setMeals] = useState<meal[]>(DUMMY_MEALS);
@@ -42,11 +43,11 @@ function App() {
   const hideCart = () => setCartIsShown(false);
 
   return (
-    <>
+    <CartProvider>
       {cartIsShown && <Cart onClose={hideCart} cartItems={cartItems} />}
       <Header cartItems={cartItems} onShowCart={showCart} />
       <Meals meals={meals} addMealToCart={addMealToCart} />
-    </>
+    </CartProvider>
   );
 }
 
