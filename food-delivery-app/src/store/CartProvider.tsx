@@ -9,17 +9,22 @@ type ContextProps = {
   removeItem: (id: string) => void;
 };
 
-type Action = {
-  type: string;
-  item: CartItem;
-};
+type Action =
+  | {
+      type: "ADD";
+      item: CartItem;
+    }
+  | {
+      type: "REMOVE";
+      id: string;
+    };
 
 type State = {
   items: CartItem[];
   totalAmount: number;
 };
 
-const defaultCartState = {
+const defaultCartState: State = {
   items: [],
   totalAmount: 0,
 };
@@ -28,7 +33,6 @@ const cartReducer = (state: State = defaultCartState, action: Action) => {
   if (action.type === "ADD") {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
-
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     );
@@ -52,6 +56,32 @@ const cartReducer = (state: State = defaultCartState, action: Action) => {
       totalAmount: updatedTotalAmount,
     };
   }
+
+  if (action.type === "REMOVE") {
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+    const existingCartItem = state.items[existingCartItemIndex];
+    const updatedAmount = state.totalAmount - existingCartItem.price;
+
+    let updatedItems;
+
+    if (existingCartItem.amount > 1) {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount - 1,
+      };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    }
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedAmount,
+    };
+  }
   return defaultCartState;
 };
 
@@ -65,7 +95,9 @@ const CartProvider = ({ children }: any) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
-  const removeItemHandler = (id: string) => {};
+  const removeItemHandler = (id: string) => {
+    dispatchCartAction({ type: "REMOVE", id: id });
+  };
 
   const cartContext: ContextProps = {
     items: cartState.items,

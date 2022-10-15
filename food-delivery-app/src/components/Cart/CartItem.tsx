@@ -7,9 +7,10 @@ type Props = {
   amount: number;
   price: number;
   onAdd: () => void;
+  onRemove: () => void;
 };
 
-const CartItem = ({ name, amount, price, onAdd }: Props) => {
+const CartItem = ({ name, amount, price, onAdd, onRemove }: Props) => {
   return (
     <div className={classes["cart-item"]}>
       <div>
@@ -20,7 +21,7 @@ const CartItem = ({ name, amount, price, onAdd }: Props) => {
         </div>
       </div>
       <div className={classes.actions}>
-        <button> - </button>
+        <button onClick={onRemove}> - </button>
         <button onClick={onAdd}> + </button>
       </div>
     </div>

@@ -14,7 +14,9 @@ const Cart = ({ onClose }: Props) => {
   const cartCtx = useContext(CartContext);
   const hasItems: boolean = cartCtx.totalAmount > 0;
 
-  const cartItemRemoveHandler = (id: string) => {};
+  const cartItemRemoveHandler = (id: string) => {
+    cartCtx.removeItem(id);
+  };
 
   const cartItemAddHandler = (item: ICartItem) =>
     cartCtx.addItem({ ...item, amount: 1 });
@@ -27,6 +29,7 @@ const Cart = ({ onClose }: Props) => {
             key={cart.name}
             {...cart}
             onAdd={cartItemAddHandler.bind(null, cart)}
+            onRemove={cartItemRemoveHandler.bind(null, cart.id)}
           />
         ))}
       </div>
