@@ -17,11 +17,12 @@ type ContextProps = {
 
 type Action = {
   type: string;
-  item: any;
+  item: Item;
 };
 
-type Props = {
-  children: any;
+type State = {
+  items: Item[];
+  totalAmount: number;
 };
 
 const defaultCartState = {
@@ -29,11 +30,29 @@ const defaultCartState = {
   totalAmount: 0,
 };
 
-const cartReducer = (state = defaultCartState, action: Action) => {
+const cartReducer = (state: State = defaultCartState, action: Action) => {
   if (action.type === "ADD") {
-    const { item } = action;
-    const updatedItems = state.items.concat(item);
-    const updatedTotalAmount = state.totalAmount + item.price * item.amount;
+    const updatedTotalAmount =
+      state.totalAmount + action.item.price * action.item.amount;
+
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+    const existingCartItem = state.items[existingCartItemIndex];
+
+    let updatedItems;
+
+    if (existingCartItem) {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount + action.item.amount,
+      };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.concat(action.item);
+    }
+
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -42,7 +61,7 @@ const cartReducer = (state = defaultCartState, action: Action) => {
   return defaultCartState;
 };
 
-const CartProvider = ({ children }: Props) => {
+const CartProvider = ({ children }: any) => {
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     defaultCartState
