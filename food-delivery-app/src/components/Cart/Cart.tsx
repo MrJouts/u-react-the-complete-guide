@@ -1,4 +1,5 @@
 import { CartItem as ICartItem } from "../../types";
+import { formatPrice } from "../../utils/format-price";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.scss";
 import CartItem from "./CartItem";
@@ -24,7 +25,7 @@ const Cart = ({ cartItems, onClose }: Props) => {
       </div>
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>${total.toFixed(2)}</span>
+        <span>{formatPrice(total)}</span>
       </div>
 
       <div className={classes.actions}>

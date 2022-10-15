@@ -1,3 +1,4 @@
+import { formatPrice } from "../../utils/format-price";
 import classes from "./CartItem.module.scss";
 
 type Props = {
@@ -12,7 +13,7 @@ const CartItem = ({ name, amount, price }: Props) => {
       <div>
         <h2>{name}</h2>
         <div className={classes.summary}>
-          <div className={classes.price}>${price}</div>
+          <div className={classes.price}>{formatPrice(price)}</div>
           <div className={classes.amount}>x {amount}</div>
         </div>
       </div>
