@@ -6,7 +6,7 @@ export type meal = {
 };
 
 export type CartItem = {
-  id?: string;
+  id: string;
   name: string;
   price: number;
   amount: number;

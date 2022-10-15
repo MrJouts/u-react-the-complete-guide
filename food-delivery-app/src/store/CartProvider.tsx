@@ -1,27 +1,21 @@
 import { useReducer } from "react";
+import { CartItem } from "../types";
 import CartContext from "./cart-context";
 
-type Item = {
-  id: string;
-  name: string;
-  price: number;
-  amount: number;
-};
-
 type ContextProps = {
-  items: Item[];
+  items: CartItem[];
   totalAmount: number;
-  addItem: (item: Item) => void;
+  addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
 };
 
 type Action = {
   type: string;
-  item: Item;
+  item: CartItem;
 };
 
 type State = {
-  items: Item[];
+  items: CartItem[];
   totalAmount: number;
 };
 
@@ -67,7 +61,7 @@ const CartProvider = ({ children }: any) => {
     defaultCartState
   );
 
-  const addItemHandler = (item: Item) => {
+  const addItemHandler = (item: CartItem) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
