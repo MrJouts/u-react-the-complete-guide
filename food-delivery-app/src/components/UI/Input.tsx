@@ -1,13 +1,13 @@
+import React from "react";
 import classes from "./Input.module.scss";
 
 type InputProps = {
   id: string;
   type: string;
-  value: string;
+  defaultValue: string;
   min?: string;
   max?: string;
   step?: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 type Props = {
@@ -15,23 +15,25 @@ type Props = {
   input: InputProps;
 };
 
-const Input = ({ label, input }: Props) => {
-  const { id, type, value, min, max, step, onChange } = input;
+const Input = React.forwardRef(
+  ({ label, input }: Props, ref: React.Ref<any>) => {
+    const { id, type, defaultValue, min, max, step } = input;
 
-  return (
-    <div className={classes.input}>
-      <label htmlFor={id}>{label}</label>
-      <input
-        id={id}
-        type={type}
-        value={value}
-        min={min}
-        max={max}
-        step={step}
-        onChange={onChange}
-      />
-    </div>
-  );
-};
+    return (
+      <div className={classes.input}>
+        <label htmlFor={id}>{label}</label>
+        <input
+          id={id}
+          type={type}
+          defaultValue={defaultValue}
+          min={min}
+          max={max}
+          step={step}
+          ref={ref}
+        />
+      </div>
+    );
+  }
+);
 
 export default Input;
