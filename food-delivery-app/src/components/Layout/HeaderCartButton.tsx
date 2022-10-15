@@ -4,11 +4,10 @@ import CartIcon from "../Cart/CartIcon";
 import classes from "./HeaderCartButton.module.scss";
 
 type Props = {
-  cartItemsAmount: number;
   onClick: () => void;
 };
 
-const HeaderCartButton = ({ cartItemsAmount, onClick }: Props) => {
+const HeaderCartButton = ({ onClick }: Props) => {
   const cartCtx = useContext(CartContext);
 
   const numberOfCartItems = cartCtx.items.reduce((acc, item) => {
