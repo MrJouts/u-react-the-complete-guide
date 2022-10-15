@@ -16,13 +16,18 @@ const Cart = ({ onClose }: Props) => {
 
   const cartItemRemoveHandler = (id: string) => {};
 
-  const cartItemAddHandler = (item: ICartItem) => {};
+  const cartItemAddHandler = (item: ICartItem) =>
+    cartCtx.addItem({ ...item, amount: 1 });
 
   return (
     <Modal onClose={onClose}>
       <div className={classes["cart-items"]}>
         {cartCtx.items.map((cart) => (
-          <CartItem key={cart.name} {...cart} />
+          <CartItem
+            key={cart.name}
+            {...cart}
+            onAdd={cartItemAddHandler.bind(null, cart)}
+          />
         ))}
       </div>
       <div className={classes.total}>

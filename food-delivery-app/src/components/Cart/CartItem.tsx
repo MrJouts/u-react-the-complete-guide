@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import { formatPrice } from "../../utils/format-price";
 import classes from "./CartItem.module.scss";
 
@@ -5,9 +6,10 @@ type Props = {
   name: string;
   amount: number;
   price: number;
+  onAdd: () => void;
 };
 
-const CartItem = ({ name, amount, price }: Props) => {
+const CartItem = ({ name, amount, price, onAdd }: Props) => {
   return (
     <div className={classes["cart-item"]}>
       <div>
@@ -19,7 +21,7 @@ const CartItem = ({ name, amount, price }: Props) => {
       </div>
       <div className={classes.actions}>
         <button> - </button>
-        <button> + </button>
+        <button onClick={onAdd}> + </button>
       </div>
     </div>
   );
