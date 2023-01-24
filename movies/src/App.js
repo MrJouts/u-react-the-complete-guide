@@ -7,23 +7,46 @@ const SWAPI_URL = "https://swapi.dev/api/films";
 function App() {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     async function fetchMoviesHandler() {
         setIsLoading(true);
-        const response = await fetch(SWAPI_URL);
-        const data = await response.json();
+        setError(null);
+        try {
+            const response = await fetch(SWAPI_URL);
+            if (!response.ok) {
+                throw new Error("Somethin went wrong!!");
+            }
 
-        const transformedMovies = data.results.map((movieData) => {
-            return {
-                id: movieData.episode_id,
-                title: movieData.title,
-                openingText: movieData.opening_crawl,
-                releaseDate: movieData.release_date,
-            };
-        });
+            const data = await response.json();
 
-        setMovies(transformedMovies);
+            const transformedMovies = data.results.map((movieData) => {
+                return {
+                    id: movieData.episode_id,
+                    title: movieData.title,
+                    openingText: movieData.opening_crawl,
+                    releaseDate: movieData.release_date,
+                };
+            });
+            setMovies(transformedMovies);
+        } catch (error) {
+            setError(error);
+        }
         setIsLoading(false);
+    }
+
+    let content = <p>Found no movies</p>;
+
+    if (movies.length > 0) {
+        content = <MoviesList movies={movies} />;
+    }
+
+    if (error) {
+        content = <p>{error.message}</p>;
+    }
+
+    if (isLoading) {
+        content = <p>Loading movies...</p>;
     }
 
     return (
@@ -32,14 +55,7 @@ function App() {
                 <h1>Movies list</h1>
                 <button onClick={fetchMoviesHandler}>Fetch Movies</button>
             </section>
-            <section>
-                {isLoading && <p>Loading movies...</p>}
-                {!isLoading && movies.length > 0 && (
-                    <MoviesList movies={movies} />
-                )}
-
-                {!isLoading && movies.length === 0 && <p>Found no movies.</p>}
-            </section>
+            <section>{content}</section>
         </div>
     );
 }
