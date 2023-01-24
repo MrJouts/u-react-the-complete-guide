@@ -6,8 +6,10 @@ const SWAPI_URL = "https://swapi.dev/api/films";
 
 function App() {
     const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function fetchMoviesHandler() {
+        setIsLoading(true);
         const response = await fetch(SWAPI_URL);
         const data = await response.json();
 
@@ -19,7 +21,9 @@ function App() {
                 releaseDate: movieData.release_date,
             };
         });
+
         setMovies(transformedMovies);
+        setIsLoading(false);
     }
 
     return (
@@ -28,7 +32,14 @@ function App() {
                 <h1>Movies list</h1>
                 <button onClick={fetchMoviesHandler}>Fetch Movies</button>
             </section>
-            <MoviesList movies={movies} />
+            <section>
+                {isLoading && <p>Loading movies...</p>}
+                {!isLoading && movies.length > 0 && (
+                    <MoviesList movies={movies} />
+                )}
+
+                {!isLoading && movies.length === 0 && <p>Found no movies.</p>}
+            </section>
         </div>
     );
 }
