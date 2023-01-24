@@ -1,0 +1,32 @@
+.card {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1rem;
+}
+
+li {
+    &:not(:last-of-type) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+    margin-right: 1rem;
+}
+
+.releaseDate {
+    &:before {
+        margin-right: 0.5rem;
+        content: "|";
+    }
+}
+
+.openingText {
+    text-align: left;
+}
