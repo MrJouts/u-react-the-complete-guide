@@ -72,14 +72,16 @@ function App() {
 
     return (
         <div className="App">
-            <section>
+            <section className="form">
                 <AddMovie onAddMovie={addMovieHandler} />
             </section>{" "}
-            <section>
-                <h1>Movies list</h1>
-                <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+            <section className="movies-list">
+                <div className="mov-col-1">
+                    <h1>Movies list</h1>
+                    <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+                </div>
+                <div className="mov-col-2">{content}</div>
             </section>
-            <section>{content}</section>
         </div>
     );
 }
