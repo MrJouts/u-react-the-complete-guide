@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 
 import Tasks from "./components/Tasks/Tasks";
 import NewTask from "./components/NewTask/NewTask";
@@ -7,7 +7,7 @@ import useHttp from "./hooks/use-http";
 function App() {
     const [tasks, setTasks] = useState([]);
 
-    const transformTasks = (taskObj) => {
+    const transformTasks = useCallback((taskObj) => {
         const loadedTasks = [];
 
         for (const taskKey in taskObj) {
@@ -15,22 +15,24 @@ function App() {
         }
 
         setTasks(loadedTasks);
-    };
+    }, []);
 
     const {
         isLoading,
         error,
         sendRequest: fetchTasks,
     } = useHttp(
-        {
-            url: "https://tasks-9ce7e-default-rtdb.firebaseio.com/tasks.json",
-        },
+        useMemo(() => {
+            return {
+                url: "https://tasks-9ce7e-default-rtdb.firebaseio.com/tasks.json",
+            };
+        }, []),
         transformTasks
     );
 
     useEffect(() => {
         fetchTasks();
-    }, []);
+    }, [fetchTasks]);
 
     const taskAddHandler = (task) => {
         setTasks((prevTasks) => prevTasks.concat(task));
