@@ -40,13 +40,13 @@ const SimpleInput = (props) => {
         emailInputReset();
     };
 
-    const nameInputClasses = nameInputHasError
-        ? "form-control invalid"
-        : "form-control";
+    const getErrorClass = (imputHasError) => {
+        return imputHasError ? "form-control invalid" : "form-control";
+    };
 
-    const emailInputClasses = emailInputHasError
-        ? "form-control invalid"
-        : "form-control";
+    const nameInputClasses = getErrorClass(nameInputHasError);
+
+    const emailInputClasses = getErrorClass(emailInputHasError);
 
     return (
         <form onSubmit={formSubmissionHandler}>
