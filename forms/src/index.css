@@ -108,3 +108,8 @@ button:disabled:active {
 .error-text {
   color: #b40e0e;
 }
+
+
+.success-text {
+  color: #209450;
+}
