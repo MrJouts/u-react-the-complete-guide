@@ -14,27 +14,39 @@ function App() {
   const [cartIsShown, setCartIsShown] = useState<boolean>(false);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<String | null | undefined>(null);
 
   useEffect(() => {
     setIsLoading(true);
     const fetchMeals = async () => {
-      const response = await fetch(
-        "https://food-app-5531c-default-rtdb.firebaseio.com/meals.json"
-      );
-      const responseData = await response.json();
+      try {
+        const response = await fetch(
+          "https://food-app-5531c-default-rtdb.firebaseio.com/meals.json"
+        );
 
-      const loadedMeals = [];
+        if (!response.ok) {
+          throw new Error("Something whent wrong");
+        }
 
-      for (const key in responseData) {
-        loadedMeals.push({
-          id: key,
-          name: responseData[key].name,
-          description: responseData[key].description,
-          price: responseData[key].price,
-        });
+        const responseData = await response.json();
+
+        const loadedMeals = [];
+
+        for (const key in responseData) {
+          loadedMeals.push({
+            id: key,
+            name: responseData[key].name,
+            description: responseData[key].description,
+            price: responseData[key].price,
+          });
+        }
+
+        setMeals(loadedMeals);
+      } catch (error) {
+        let message;
+        if (error instanceof Error) message = error.message;
+        setError(message);
       }
-
-      setMeals(loadedMeals);
       setIsLoading(false);
     };
 
@@ -78,6 +90,7 @@ function App() {
         meals={meals}
         addMealToCart={addMealToCart}
         isLoading={isLoading}
+        error={error}
       />
     </CartProvider>
   );
