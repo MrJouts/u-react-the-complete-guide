@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import { CartItem, meal } from "./types";
-import { DUMMY_MEALS } from "./mocks/meals";
 
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
@@ -25,7 +24,7 @@ function App() {
         );
 
         if (!response.ok) {
-          throw new Error("Something whent wrong");
+          throw new Error("Something went wrong");
         }
 
         const responseData = await response.json();
