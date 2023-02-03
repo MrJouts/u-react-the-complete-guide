@@ -7,6 +7,7 @@ type ContextProps = {
   totalAmount: number;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
+  removeAll: () => void;
 };
 
 type Action =
@@ -17,6 +18,9 @@ type Action =
   | {
       type: "REMOVE";
       id: string;
+    }
+  | {
+      type: "REMOVE_ALL";
     };
 
 type State = {
@@ -82,6 +86,11 @@ const cartReducer = (state: State = defaultCartState, action: Action) => {
       totalAmount: updatedAmount,
     };
   }
+
+  if (action.type === "REMOVE_ALL") {
+    return defaultCartState;
+  }
+
   return defaultCartState;
 };
 
@@ -99,11 +108,16 @@ const CartProvider = ({ children }: any) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+  const removeAllHandler = () => {
+    dispatchCartAction({ type: "REMOVE_ALL" });
+  };
+
   const cartContext: ContextProps = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    removeAll: removeAllHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>

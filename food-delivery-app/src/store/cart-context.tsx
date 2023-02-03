@@ -12,6 +12,7 @@ type Props = {
   totalAmount: number;
   addItem: (item: Item) => void;
   removeItem: (id: string) => void;
+  removeAll: () => void;
 };
 
 const CartContext = createContext<Props>({
@@ -19,6 +20,7 @@ const CartContext = createContext<Props>({
   totalAmount: 0,
   addItem: (item) => {},
   removeItem: (id) => {},
+  removeAll: () => {},
 });
 
 export default CartContext;
