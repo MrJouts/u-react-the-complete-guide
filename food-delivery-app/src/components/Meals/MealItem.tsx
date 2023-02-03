@@ -7,7 +7,6 @@ import { formatPrice } from "../../utils/format-price";
 
 type Props = {
   meal: meal;
-  addMealToCart: Function;
 };
 
 const MealItem = ({ meal }: Props) => {
