@@ -6,9 +6,10 @@ const isFiveChars = (value: String = ""): boolean => value.trim().length === 5;
 
 type Props = {
   onCancel: () => void;
+  onConfirm: (value: Object) => void;
 };
 
-const Checkout = ({ onCancel }: Props) => {
+const Checkout = ({ onCancel, onConfirm }: Props) => {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const streetInputRef = useRef<HTMLInputElement>(null);
   const postalCodeInputRef = useRef<HTMLInputElement>(null);
@@ -51,7 +52,12 @@ const Checkout = ({ onCancel }: Props) => {
       return;
     }
 
-    // Submit cart data
+    onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
 
     return true;
   };
