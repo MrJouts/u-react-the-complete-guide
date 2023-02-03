@@ -9,7 +9,6 @@ import CartProvider from "./store/CartProvider";
 
 function App() {
   const [meals, setMeals] = useState<meal[]>([]);
-  const [cartItems, setCartItems] = useState<CartItem[] | null>(null);
   const [cartIsShown, setCartIsShown] = useState<boolean>(false);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -52,45 +51,15 @@ function App() {
     fetchMeals();
   }, []);
 
-  const addMealToCart = (amount: number, name: string, price: number) => {
-    const newCartItem: CartItem = {
-      name,
-      amount: +amount,
-      price: price,
-    };
-
-    let newItems: CartItem[] = [];
-
-    if (cartItems === null) {
-      newItems = [newCartItem];
-    } else if (cartItems.find((cart) => cart.name == name)) {
-      newItems = cartItems.map((cart) => {
-        if (cart.name == name) {
-          cart.amount += +amount;
-        }
-        return cart;
-      });
-    } else {
-      newItems = cartItems.concat(newCartItem);
-    }
-
-    setCartItems((prevItems) => (prevItems = newItems));
-  };
-
   const showCart = () => setCartIsShown(true);
 
   const hideCart = () => setCartIsShown(false);
 
   return (
     <CartProvider>
-      {cartIsShown && <Cart onClose={hideCart} cartItems={cartItems} />}
-      <Header cartItems={cartItems} onShowCart={showCart} />
-      <Meals
-        meals={meals}
-        addMealToCart={addMealToCart}
-        isLoading={isLoading}
-        error={error}
-      />
+      {cartIsShown && <Cart onClose={hideCart} />}
+      <Header onShowCart={showCart} />
+      <Meals meals={meals} isLoading={isLoading} error={error} />
     </CartProvider>
   );
 }
